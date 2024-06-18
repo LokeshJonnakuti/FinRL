@@ -1,4 +1,6 @@
 from __future__ import annotations
+
+import secrets
 import time
 from copy import deepcopy
 
@@ -10,7 +12,6 @@ from gym import spaces
 from stable_baselines3.common import logger
 from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.vec_env import SubprocVecEnv
-import secrets
 
 matplotlib.use("Agg")
 
