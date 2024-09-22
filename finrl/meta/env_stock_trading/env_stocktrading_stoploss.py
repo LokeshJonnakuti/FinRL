@@ -1,6 +1,4 @@
 from __future__ import annotations
-
-import random
 import time
 from copy import deepcopy
 
@@ -12,6 +10,7 @@ from gym import spaces
 from stable_baselines3.common import logger
 from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.vec_env import SubprocVecEnv
+import secrets
 
 matplotlib.use("Agg")
 
@@ -125,7 +124,7 @@ class StockTradingEnvStopLoss(gym.Env):
     def seed(self, seed=None):
         if seed is None:
             seed = int(round(time.time() * 1000))
-        random.seed(seed)
+        secrets.SystemRandom().seed(seed)
 
     @property
     def current_step(self):
@@ -145,7 +144,7 @@ class StockTradingEnvStopLoss(gym.Env):
         self.n_buys = np.zeros(len(self.assets))
         self.avg_buy_price = np.zeros(len(self.assets))
         if self.random_start:
-            starting_point = random.choice(range(int(len(self.dates) * 0.5)))
+            starting_point = secrets.choice(range(int(len(self.dates) * 0.5)))
             self.starting_point = starting_point
         else:
             self.starting_point = 0
