@@ -1,10 +1,10 @@
 from __future__ import annotations
 
+import secrets
 from collections import deque
 
 import numpy as np
 from torch.utils.data.dataset import IterableDataset
-import secrets
 
 
 class PVM:
